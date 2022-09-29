@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import { Stack } from '@mui/material';
 import Todoenter from './components/todoenter';
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
