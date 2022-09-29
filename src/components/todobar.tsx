@@ -5,11 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 import RestoreIcon from '@mui/icons-material/Restore';
-interface todo  {
-    todo_id:number,
-    todo_txt:string,
-    todo_status:string
-}
+import { todo } from '../shared/types';
 
 export const Todobar = ({todo_id,todo_txt,todo_status}:todo) => {
   return (

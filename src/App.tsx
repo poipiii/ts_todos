@@ -1,25 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { Todobar } from './components/todobar'
-import Box from '@mui/material/Box';
-import { Stack } from '@mui/material';
-import Todoenter from './components/todoenter';
-function App() {
 
+import Todos from './components/todos'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import CssBaseline from '@mui/material/CssBaseline';
+
+function App() {
+  const queryclient = new QueryClient()
   return (
-    <div className="App">
-      <div>
-        <Box>
-          <Todoenter></Todoenter>
-        </Box>
-        <Stack direction="column" spacing={2}> 
-          <Todobar todo_id={1} todo_txt='Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..' todo_status='notdone'></Todobar>
-          <Todobar todo_id={2} todo_txt='Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..' todo_status='done'></Todobar>
-          </Stack>
-      </div>
-    </div>
+    <QueryClientProvider client={queryclient}>
+      <CssBaseline>
+      <Todos></Todos>
+      </CssBaseline>
+    </QueryClientProvider>
   )
 }
 
-export default App
+export default App 
