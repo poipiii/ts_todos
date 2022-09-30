@@ -1,9 +1,11 @@
 
 import Todos from './components/todos'
+import './App.css'
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
       <CssBaseline>
       <Todos></Todos>
       </CssBaseline>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }

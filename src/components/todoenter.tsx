@@ -9,16 +9,21 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query'
-import add_todo from '../lib/Api'
+
+import * as Api from '../lib/Api'
 type Props = {}
-const mutation = useMutation(add_todo)
 const Todoenter = (props: Props) => {
+  const queryclient = useQueryClient()
   const [Todo_txt, setTodo_txt] = useState("");
+  const mutation = useMutation(Api.add_todo,{onSuccess:()=>{
+    queryclient.invalidateQueries(['todos'])
+  }})
+
   return (
     <div>
         <Box sx={{paddingBottom:"30px",display:"flex"}}>
             <TextField fullWidth label="Enter your todo" onChange={(e)=>setTodo_txt(e.target.value)}></TextField>
-            <IconButton aria-label='add' color='success' onClick={()=>mutation.mutate()}>
+            <IconButton aria-label='add' color='success' onClick={()=>{mutation.mutate({todo_txt:Todo_txt,todo_status:false})}}>
               <AddIcon></AddIcon>
               </IconButton>
         </Box>
