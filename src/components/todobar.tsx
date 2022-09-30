@@ -30,12 +30,12 @@ export const Todobar = ({todo_id,todo_txt,todo_status}:todo) => {
                 <DeleteIcon></DeleteIcon>
             </IconButton>
             {todo_status===true?
-             <IconButton aria-label='check' color='warning'>
+             <IconButton aria-label='check' color='warning' onClick={()=>{update_todo_status.mutate({todo_id:todo_id,new_todo_status:false})}}>
                 <RestoreIcon></RestoreIcon>
             </IconButton>
        
             :
-              <IconButton aria-label='check' color='success' onClick={()=>{update_todo_status.mutate(todo_id,true)}}>
+              <IconButton aria-label='check' color='success' onClick={()=>{update_todo_status.mutate({todo_id:todo_id,new_todo_status:true})}}>
                 <CheckIcon></CheckIcon>
             </IconButton>
            
