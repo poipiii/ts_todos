@@ -11,6 +11,7 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query'
+import { it } from 'node:test';
 type Props = {}
 
 const Todos = (props: Props) => {
@@ -30,11 +31,15 @@ useEffect(()=>{
         </Box>
         <Stack direction="column" spacing={2}> 
            {
-            Todo && Todo.map(item=>
-                 <Todobar key={item.id} todo_id={item.id} todo_txt={item.todo_txt} todo_status={item.todo_status}></Todobar>
-
+            Todo && Todo.map((item)=>(item.todo_status ===false?(<Todobar key={item.id} todo_id={item.id} todo_txt={item.todo_txt} todo_status={item.todo_status}></Todobar>):null)
               )
+            }
+          </Stack>
 
+          <Stack direction="column" spacing={2}> 
+           {
+            Todo && Todo.map((item)=>(item.todo_status ===true?(<Todobar key={item.id} todo_id={item.id} todo_txt={item.todo_txt} todo_status={item.todo_status}></Todobar>):null)
+              )
             }
           </Stack>
       </Box>
